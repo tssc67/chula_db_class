@@ -1,0 +1,34 @@
+<style>
+    .studentBtn{
+        background:#555;
+        color:white;
+        padding:1em;
+        text-align: center;
+    }
+    .studentBtn:hover{
+        background:#444;
+    }
+</style>
+<div class="container-fluid">
+<div class="row">
+    <div class="studentBtn col-sm-3" id="regHis">Registration History</div>
+    <div class="studentBtn col-sm-3" id="bevHis">Behavior Point History</div>
+    <div class="studentBtn col-sm-3" id="yeaGPA">Yearly GPA</div>
+    <div class="studentBtn col-sm-3" id="CorCou">Core Course History</div>
+</div>
+</div>
+
+<script>
+    $('#regHis').click(function(e){
+         page.load(`page/registration_history`);
+    })
+    $('#bevHis').click(function(e){
+        page.load('page/behavior_history');
+    })
+    $('#yeaGPA').click(function(e){
+        page.load('page/yearly_gpa');
+    })
+    $('#CorCou').click(function(e){
+        page.load('page/core_course');
+    })
+</script>

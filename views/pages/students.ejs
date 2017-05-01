@@ -1,0 +1,51 @@
+<%-include students.css%>
+<div class="container-fluid">
+    <div id="ownerinfo-header" class="row">
+        <div class="col-lg-8">
+            <div class="input-group">
+            <input type="text" class="form-control" id="searchTxt" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </span>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+    <div id="ownerinfo-table">
+        <table class="table table-striped">
+            <tr>
+                <td>sid</td>
+                <td>Firstname</td>
+                <td>Surname</td>
+                <td>Behavior Point</td>
+                <td>Entrance Year</td>
+                <td>Gpax</td>
+                <td>Email</td>
+                <td>Status</td>
+                <td>Tel No.</td>
+                <td>Address</td>
+                <td>Major</td>
+            </tr>
+            <%rowData.map(function(ele){ %>
+            <tr>
+                <%ele.map(function(item,idx){%>
+                <td>
+                    <% if(idx==0){ %>
+                    <a class="sid">
+                    <% } %>
+                    <%=item%>
+                    <% if(idx==0){ %>
+                    </a>
+                    <% } %>
+                </td>
+                <%})%>
+            </tr>
+            <%})%>
+        </table>
+    </div>
+</div>
+<script>
+    $('.sid').click(function(e){
+        console.log("luy");
+        page.load(`page/student`)
+    });
+</script>

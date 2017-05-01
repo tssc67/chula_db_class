@@ -1,0 +1,24 @@
+{
+	"web":{
+		"administrator":{
+			"username":"admin",
+			"password":"adminisanadmin"
+		},
+		"advisor":{
+			"username":"advisor",
+			"password":"advisoradviseeverything"
+		},
+		"port":80,
+		"compression":{
+			"threshold":256
+		}
+	},
+	"db":{
+		"connectionLimit":10,
+		"host":"localhost",
+		"user":"root",
+		"password":"390194383",
+		"port":3306,
+		"database":"kofuku"
+	}
+}

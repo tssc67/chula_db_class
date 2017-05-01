@@ -1,0 +1,1 @@
+select password from teacher_login where id = ?;

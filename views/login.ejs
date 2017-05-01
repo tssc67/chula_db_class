@@ -1,0 +1,112 @@
+ <%- include head.ejs %>
+ <style>
+	 .type{
+		background:#444466;
+		padding:1em;
+		text-align: center;
+	 }
+	 .type:hover{
+		 color:white;
+		 background:#666688;
+	 }
+	 a:visited{
+		color:white;
+	 }
+	 a{
+		 color:inherit;
+	 }
+ </style>
+ <div id="login-bg" style="background:#ff88aa;color:white">
+	<div class="container">
+		<div id="loginFrm" style="height:100vh" style="position:relative">
+			<div id="vcenterFrm" class="vcenter">
+				<div id="innerFrm" class="form-group" style="width:100%">
+					<div class="row">
+						<div class="col-lg-3 col-sm-3"></div>
+						<div class="col-lg-3 col-sm-3" id="currentType" style="padding:1em;font-size:2em;">
+							Advisor
+						</div>
+						<div class="col-lg-3 col-sm-3"></div>
+						<div class="col-lg-3 col-sm-3"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-sm-3"></div>
+						<a href="javascript:" id="advisorBtn">
+						<div class="col-lg-3 col-sm-3 type">
+							Advisor
+						</div>
+						</a>
+						<a href="javascript:" id="administratorBtn">
+						<div class="col-lg-3 col-sm-3 type">
+							Administrator
+						</div>
+						</a>
+						<div class="col-lg-3 col-sm-3"></div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-3 col-sm-1"></div>
+						<div class="col-lg-6 col-sm-10">
+						<label for="usernameTextbox">Username</label>
+						</div>
+						<div class="col-lg-3 col-sm-1"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-sm-1"></div>
+						<div class="col-lg-6 col-sm-10">
+						<input type="text" class="form-control" id="usernameTextbox" placeholder="Username">
+						</div>
+						<div class="col-lg-3 col-sm-1"></div>
+					</div><br>
+					<div class="row">
+						<div class="col-lg-3 col-sm-1"></div>
+						<div class="col-lg-6 col-sm-10">
+						<label for="passwordTextbox">Password</label>
+						</div>
+						<div class="col-lg-3 col-sm-1"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 col-sm-1"></div>
+						<div class="col-lg-6 col-sm-10">
+						<input type="password" class="form-control" id="passwordTextbox" placeholder="Pasword">
+						</div>
+						<div class="col-lg-3 col-sm-1"></div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-lg-5 col-sm-1"></div>
+						<div class="col-lg-2 col-sm-10">
+						<button type="submit" id="submitBtn" class="btn btn-default" style="width:100%">Submit</button>
+						</div>
+						<div class="col-lg-5 col-sm-1"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div>
+<script>
+	function submit(){
+		console.log("Loggin in");
+		$.post('/login',{
+			type:current,
+			username:$('#usernameTextbox').val(),
+			password:$('#passwordTextbox').val()
+		},function(data){
+			if(data=='OK')location.reload();
+		})
+	}
+	$(function(){
+		var curEle = $('#currentType');
+		$('#submitBtn').click(submit);
+		$('#advisorBtn').click(function(e){
+			curEle.text("Advisor");
+			current = "advisor";
+		})
+		$('#administratorBtn').click(function(e){
+			curEle.text("Administrator");
+			current = "administrator";
+		})
+	});
+	var current = "advisor";
+</script>
+<%- include foot.ejs %>

@@ -1,0 +1,1 @@
+SELECT * FROM student_advised_enroll WHERE tid = ?;

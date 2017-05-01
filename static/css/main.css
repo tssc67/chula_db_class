@@ -1,0 +1,98 @@
+html,body{
+	margin:0;
+	background:#eee;
+	
+	padding:0;
+}
+.vcenter {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+.grad{
+	position:absolute;
+	height:100%;
+	width:100%;
+	background: url('../img/grad.png');
+	z-index:0;
+}
+#header{
+	position:absolute;
+	width:100%;
+	color:white;
+	background:#ff88aa;
+}
+#header-left{
+	position:relative;
+	z-index:2;
+}
+#header-right{
+	height:100%;
+	position:absolute;
+	right:0;
+}
+#header-label{
+	padding:1em;
+}
+#header-padder{
+	height:12em;
+}
+#context-label{
+	font-size:2.5em;
+}
+#nav{
+	z-index:100;
+	font-size:1.5em;
+}
+.nav-item{
+	color:#ccc;
+	float:left;
+	list-style-type:none;
+	 display:block;
+	 margin: 0;
+}
+.nav-text{
+	padding:0.75em;
+}
+.nav-hidden{
+	position:absolute;
+	color:black;
+	display:none;
+	background:#e1e1e1;
+	z-index:10;
+}
+.nav-item:hover{
+	background:#637581;
+	color:white;
+}
+
+.nav-item:hover div{
+	display:block; 
+}
+
+.subnav-item{
+	padding:0.5em;
+	width:15em;
+}
+
+.subnav-item:hover{
+	color:white;
+background:#00a0d0;
+}
+
+.disable:hover{
+	background:#e1e1e1;
+	color:#ccc;
+}
+
+a { color: inherit; } 
+.disable { color: #ccc;}
+
+#page{
+	z-index:0;
+}
+.input-group{
+	position:relative;
+	z-index:0;
+}
