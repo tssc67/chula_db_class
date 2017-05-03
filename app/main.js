@@ -34,6 +34,10 @@ app.use(require('./authentication.js'));
 
 //Web logic
 app.use('/page',require('./page.js'));
+app.use('/logout',(req,res)=>{
+	delete req.session['username'];
+	res.end('ok');
+})
 app.use((req,res)=>res.render('index',{type:req.session.type}));
 
 app.listen(cfg.get("web.port"));

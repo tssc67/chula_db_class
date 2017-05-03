@@ -22,7 +22,7 @@
 			<div id="vcenterFrm" class="vcenter">
 				<div id="innerFrm" class="form-group" style="width:100%">
 					<div class="row">
-						<div class="col-lg-3 col-sm-3"></div>
+						<div class="col-lg-3 col-sm-3"><input id="exploit" type="checkbox">Exploitable</input></div>
 						<div class="col-lg-3 col-sm-3" id="currentType" style="padding:1em;font-size:2em;">
 							Advisor
 						</div>
@@ -87,11 +87,13 @@
 <script>
 	function submit(){
 		console.log("Loggin in");
-		$.post('/login',{
+		console.log()
+		$.post($('#exploit').is(':checked')? `/login-exploit`:`/login`,{
 			type:current,
 			username:$('#usernameTextbox').val(),
 			password:$('#passwordTextbox').val()
 		},function(data){
+			console.log(data);
 			if(data=='OK')location.reload();
 		})
 	}

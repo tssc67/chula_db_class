@@ -1,16 +1,42 @@
-
+const loader = require('./loader.js');
 module.exports = exports = function(getConnection){
 	pooler = getConnection;
 	return module.exports;
 }
 
-exports.getStudents = function(){
+exports.getStudents = function(tid){
     return new Promise(function(resolve,reject){
-        resolve([
-            ["571059221","ธีรภัทร","สุจิตโต","100","2557","2.xx","teerapart.s@gmail.com","00000","095954753x","click!","Computer Engineering"],
-            ["571059222","ธีรภัทร","สุจิตโต","100","2557","2.xx","teerapart.s@gmail.com","00000","095954753x","click!","Computer Engineering"],
-            ["571059223","ธีรภัทร","สุจิตโต","100","2557","2.xx","teerapart.s@gmail.com","00000","095954753x","click!","Computer Engineering"],
-            ["571059224","ธีรภัทร","สุจิตโต","100","2557","2.xx","teerapart.s@gmail.com","00000","095954753x","click!","Computer Engineering"],
-        ])
+        pooler().then(con=>{
+            con.query(loader('studentOfAdvisor'),[tid],(err,res,fields)=>{
+                if(err)return reject(err);
+                var arr = [];  
+                res.forEach(row=>{
+                    var rowData = [];
+                    Object.keys(row).forEach(key=>{
+                        rowData.push(row[key]);
+                    })
+                    arr.push(rowData);
+                })
+                resolve(arr);
+            })
+        })
+    })
+}
+exports.searchStudent = function(tid,sid){
+    return new Promise(function(resolve,reject){
+        pooler().then(con=>{
+            con.query(loader('searchStudent'),[tid,sid],(err,res,fields)=>{
+                if(err)return reject(err);
+                var arr = [];  
+                res.forEach(row=>{
+                    var rowData = [];
+                    Object.keys(row).forEach(key=>{
+                        rowData.push(row[key]);
+                    })
+                    arr.push(rowData);
+                })
+                resolve(arr);
+            })
+        })
     })
 }

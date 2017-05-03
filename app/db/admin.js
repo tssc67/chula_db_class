@@ -9,10 +9,12 @@ module.exports = exports = function(getConnection){
 
 exports.verifyLogin = function(type,username,password){
 	return new Promise(function(resolve,reject){
-		pooler(con=>{
-			con.query(loader('login'),[username],(err,res)=>{
-				if(res.password!=password)return resolve();
-				return reject()
+		return pooler().then(con=>{
+			con.query(loader('login'),[username],(err,res,fields)=>{
+				if(err)reject(err);
+				if(res.length == 0 )return reject();
+				if(res[0].password!=password)return reject();
+				return resolve();
 			})
 		})
 	})	
@@ -20,8 +22,11 @@ exports.verifyLogin = function(type,username,password){
 
 exports.verifyLoginVulnerable = function(type,username,password){
 	return new Promise(function(resolve,reject){
-		pooler(con=>{
-			con.query(`SELECT count(*) FROM teacher_login WHERE id='${username}' and password=${password};`,(err,res,fields)=>{
+		return pooler().then(con=>{
+			con.query(`SELECT count(*) FROM teacher_login WHERE id='${username}' and password='${password}';`,(err,res,fields)=>{
+				if(err)return reject();
+				if(res[0]['count(*)'])return resolve();
+				reject();
 			});
 		})
 	})

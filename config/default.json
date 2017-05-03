@@ -19,6 +19,6 @@
 		"user":"root",
 		"password":"390194383",
 		"port":3306,
-		"database":"kofuku"
+		"database":"chula"
 	}
 }

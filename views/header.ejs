@@ -12,6 +12,11 @@
 			</div>
 		</div>
 		<div id="nav">
+			<a href="javascript:;" id="#logout" style="text-decoration: none" onclick="logout()">
+			<div id="logout" style="padding:1em;position:fixed;right:0">
+				Logout
+			</div>
+			</a>
 			<div class="container-fluid">
 				<% if(type=="advisor"){ %>
 				<a href="javascript:;" >
@@ -29,4 +34,8 @@
 </div>
 <div id="header-padder"></div>
 <script>
+	function logout(){
+		$.get('/logout');
+		window.location.reload();
+	}
 </script>

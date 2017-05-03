@@ -4,7 +4,7 @@ var pool  = mysql.createPool(cfg.get('db'));
 function getConnection(){
 	return new Promise(function(resolve,reject){
 		pool.getConnection(function(err,conn){
-			if(err)return reject();
+			if(err)return reject(err);
 			return resolve(conn);
 		});
 	});
