@@ -5,7 +5,7 @@
             <div class="input-group">
             <input type="text" class="form-control" id="searchTxt" placeholder="Search for...">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick='search()'></span></button>
+                <button class="btn btn-default" type="button" onclick='search()'><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </span>
             </div><!-- /input-group -->
         </div>
@@ -22,7 +22,9 @@
                 <td>Gpax</td>
                 <td>Email</td>
                 <td>Status</td>
-                <td>Date of Birth</td>
+                <td>Faculty</td>
+                <td>Branch</td>
+                <td>Birthdate</td>
             </tr>   
             <%rowData.map(function(ele){ %>
             <tr>
@@ -44,10 +46,10 @@
 </div>
 <script>
     function search(){
-        page.load("page/search?sid=" + $("#searchTxt").val());
+        console.log("...");
+        loadPage("search?sid=" + $("#searchTxt").val());
     }
     $('.sid').click(function(e){
-        console.log("luy");
-        page.load(`page/student`)
+        loadPage('student');
     });
 </script>

@@ -8,6 +8,7 @@ exports.getStudents = function(tid){
     return new Promise(function(resolve,reject){
         pooler().then(con=>{
             con.query(loader('studentOfAdvisor'),[tid],(err,res,fields)=>{
+                con.release();
                 if(err)return reject(err);
                 var arr = [];  
                 res.forEach(row=>{
@@ -26,6 +27,7 @@ exports.searchStudent = function(tid,sid){
     return new Promise(function(resolve,reject){
         pooler().then(con=>{
             con.query(loader('searchStudent'),[tid,sid],(err,res,fields)=>{
+                con.release();
                 if(err)return reject(err);
                 var arr = [];  
                 res.forEach(row=>{

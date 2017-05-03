@@ -8,6 +8,9 @@ function tableResponse(page,res,fetcher,columns,type){
             type
         });
     })
+    .catch(err=>{
+        res.end("Error");
+    });
 }
 pageRouter
 .get('/students',(req,res)=>{
