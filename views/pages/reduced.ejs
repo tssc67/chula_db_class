@@ -1,4 +1,3 @@
-<%-include students.css%>
 <div class="container-fluid">
     <div id="ownerinfo-header" class="row">
         <div class="col-lg-8">
@@ -7,27 +6,16 @@
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button" onclick='search()'><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </span>
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick='loadPage("reduced")'> List deducted point student</button>
-            </span>
             </div><!-- /input-group -->
         </div>
     </div>
     <div id="ownerinfo-table">
         <table class="table table-striped">
             <tr>
-                <td>sid</td>
-                <td>Enroll Year</td>
+                <td>SID</td>
                 <td>Firstname</td>
                 <td>Surname</td>
-                <td>Tel No.</td>
-                <td>Behavior Score</td>
-                <td>Gpax</td>
-                <td>Email</td>
-                <td>Status</td>
-                <td>Faculty</td>
-                <td>Branch</td>
-                <td>Birthdate</td>
+                <td>Score</td>
             </tr>   
             <%rowData.map(function(ele){ %>
             <tr>
@@ -50,7 +38,7 @@
 <script>
     function search(){
         console.log("...");
-        loadPage("search?sid=" + $("#searchTxt").val());
+        loadPage("searchReduced?sid=" + $("#searchTxt").val());
     }
     $('.sid').click(function(e){
         loadPage('student');

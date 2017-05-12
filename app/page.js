@@ -9,6 +9,7 @@ function tableResponse(page,res,fetcher,columns,type){
         });
     })
     .catch(err=>{
+        console.log(err);
         res.end("Error");
     });
 }
@@ -17,10 +18,19 @@ pageRouter
     if(req.session.type != "advisor")  return res.end("BYE");
     tableResponse('students',res,db.students.getStudents(req.session.username),req.session.type);
 })
+.get('/reduced',(req,res)=>{
+    if(req.session.type != "advisor")  return res.end("BYE");
+    tableResponse('reduced',res,db.students.getReducedStudents(req.session.username),req.session.type);
+})
 .get('/search',(req,res)=>{
     if(req.session.type != "advisor")  return res.end("BYE");
     console.log(req.query);
     tableResponse('students',res,db.students.searchStudent(req.session.username,req.query.sid),req.session.type);
+})
+.get('/searchReduced',(req,res)=>{
+    if(req.session.type != "advisor")  return res.end("BYE");
+    console.log(req.query);
+    tableResponse('reduced',res,db.students.searchReducedStudent(req.session.username,req.query.sid),req.session.type);
 })
 .get('/student',(req,res)=>{
     if(req.session.type != "advisor")  return res.end("BYE");
